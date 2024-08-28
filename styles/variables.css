@@ -1,1 +1,19 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+    --main-font: Inter;
+    --accent-font: PressStart2P;
+    --main-font-weight: 400;
+    --main-font-weight-headings: 700;
+    --header-font-weight: 400;
+    --bg-color: #FFFFFF;
+    --accent-color: #000000;
+    --color-gradient-striples: #d3d3d3;
+    --color-gradient-start: #e7e7e7;
+    --color-gradient-end: #1a1a1a;
+    --content-width: clamp(375px, 80%, 700px);
+    --label-border-color: rgba(255, 255, 255, 0.5);
+    --color-hover: rgba(0,0,0, 0.6);
+    --contour-color: #000000;
+    --fill-color: #ff0000;
+    --sparks-color: #ff0000;
+}
