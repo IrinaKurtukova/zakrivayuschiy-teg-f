@@ -31,8 +31,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
 }
 
 @supports (font-variation-settings: normal) {
@@ -51,13 +49,12 @@
     margin-block: 100px;
     text-transform: uppercase;
     border: 2px solid var(--accent-color, #000000);
-}
+    }
 
 @media (min-width: 701px) {
     .header {
         width: 700px;
         height: 368px;
-        /*gap: 10px;*/
     }
 }
 
@@ -68,7 +65,7 @@
 
 .heading {
     font-size: clamp(1.0025rem, 2.6808rem + 1.4085vw, 4.0625rem);
-    padding: clamp(120px, 114.4348px + 1.7391cqi, 136px) clamp(14px, -23.0435px + 11.5761cqi, 120.5px) 0px;
+    padding: clamp(120px, 114.4348px + 1.7391cqi, 136px) clamp(14px, -23.0435px + 11.0061cqi, 120.5px) 0px;
     line-height: 49px;
 }
 
@@ -102,7 +99,6 @@
     border: none;
     padding-left: 20px;
     text-transform: uppercase;
-    background-color: hotpink;
     display: inline-block;
 }
 
@@ -136,7 +132,6 @@
     color: var(--color-hover);
 }
 
-
 .theme-menu__button::after {
     content: "";
     position: absolute;
@@ -156,15 +151,12 @@
     transform: scaleX(1);
 }
 
-
 .theme-menu__button:focus-visible::after {
     width: 100%;
     outline: none;
     transform: scaleX(1);
-    /*scale: 1;*/
     color: var(--color-hover);
     transition: color 0.3s ease, transform 0.3s ease;
-
 }
 
 .theme-menu__button:focus {
@@ -176,19 +168,16 @@
     transition: color 0.3s ease;
 }
 
-
 .cards_list {
     display: flex;
     flex-direction: column;
     gap: 49px;
 }
 
-
 .card {
     display: flex;
     flex-direction: column;
     background-color: var(--bg-color, #FFFFFF);
-    /*margin-block-end: 54px;*/
     border: 2px solid var(--accent-color, #000000);
 }
 
@@ -214,11 +203,9 @@
 
 @media (min-width: 701px) {
     .label {
-        /*margin-top: 5px;*/
         right: 26px;
     }
 }
-
 
 @supports (-webkit-text-stroke: 1px var(--label-border-color)) or (text-stroke: 1px var(--label-border-color)) {
     .label {
@@ -250,6 +237,53 @@
     }
 }
 
+.purple_truck {
+    filter: brightness(300%)
+}
+
+.black_truck {
+    filter: contrast(50%);
+}
+
+.neon_truck {
+    filter: blur(10px);
+}
+
+.pink_truck {
+    transition: 4s ease;
+    cursor: pointer;
+}
+
+.pink_truck:hover {
+    filter: opacity(0);
+}
+
+.green_truck {
+    cursor: pointer;
+    transition: 3s ease;
+}
+
+.green_truck:hover {
+    filter: grayscale(1);
+}
+
+.brown_truck {
+    cursor: pointer;
+    transition: 2s ease;
+}
+
+.brown_truck:hover {
+    filter: saturate(300%);
+}
+
+.blur_truck {
+    filter: sepia(10%);
+}
+
+.red_truck {
+    filter: invert(1) brightness(200%) saturate(60%) sepia(10%);
+}
+
 
 .article {
     font-family: var(--main-font), Inter;
@@ -257,11 +291,9 @@
     padding: 25px 25px 0px;
 }
 
-
 .button {
     display: flex;
     justify-content: flex-end;
-    /*background-color: #ffc400;*/
     gap: 10px;
     margin-right: 25px;
     margin-bottom: 25px;
@@ -275,12 +307,10 @@
     display: inline-block;
     justify-content: center;
     align-items: center;
-    /*background-color: transparent;*/
-    background-color: hotpink;
+    background-color: inherit;
     padding: 0;
     cursor: pointer;
     border: 2px solid transparent;
-
 }
 
 .card__icon-button:focus {
@@ -291,7 +321,6 @@
 .card__icon-button:focus-visible {
     border: 2px solid var(--accent-color);
     transition: border 0.3s ease;
-
 }
 
 .card__icon-button:hover {
@@ -299,28 +328,11 @@
     transition: fill 0.5s ease;
 }
 
-
 /*✦ like-icon — для svg-иконки анимированного сердца*/
 .like-icon {
-    /*background-color: #20f606;*/
-    /*width: 27px;*/
-    /*height: 24px;*/
+
 }
 
-
-/*.sparks {*/
-/*    fill: transparent;*/
-/*    transition: fill 0.3s ease;*/
-/*}*/
-
-/*.sparks:hover {*/
-/*    fill: var(--fill-color);*/
-/*    opacity: 1;*/
-/*}*/
-
-/*Это мой код*/
-
-/*Это начало кода*/
 .core {
     fill: transparent;
     transition: fill 0.3s linear;
@@ -335,14 +347,12 @@
 .heart:hover .core {
     fill: var(--accent-color);
     opacity: 1;
-    /*transition: fill 0.3s linear;*/
 }
 
 
 .heart:hover .main-body {
     fill: var(--accent-color);
     opacity: 1;
-    /*transition: fill 0.3s linear;*/
 }
 
 .heart:not(:hover).core {
@@ -350,17 +360,14 @@
     fill: var(--contour-color);
 }
 
-
 .heart:active .core {
     fill: var(--fill-color);
     opacity: 1;
-    /*transition: fill 0.3s linear;*/
 }
 
 .heart:active .main-body {
     fill: var(--fill-color);
     opacity: 1;
-    /*transition: fill 0.3s linear;*/
 }
 
 .like-icon.is-liked .core {
@@ -393,50 +400,21 @@
     }
 }
 
-
-
-
-
-
-
-
-/*@keyframes fill {*/
-/*    from {*/
-/*        fill: transparent;*/
-/*    }*/
-/*    50% {*/
-/*        fill: var(--fill-color);*/
-/*    }*/
-/*    to {*/
-/*        fill: transparent;*/
-/*    }*/
-/*}*/
-
-
-
 .sparks {
     fill: transparent;
     transition: fill 0.3s linear;
-
-    /*animation: sparkle 0.3s ease-in 0.3s forwards;*/
-    /*!*fill: transparent;*!*/
-    /*opacity: 0;*/
-    /*!*transition: fill 0.3s ease-in 0.3s;*!*/
 }
 
 .heart:active .sparks {
     fill: var(--fill-color);
     opacity: 1;
-    /*transition: fill 0.3s linear;*/
 }
 
 .like-icon.is-liked .sparks {
     fill: var(--fill-color);
     opacity: 1;
-    /*transition: fill 0.6s linear;*/
     animation: sparkle 0.3s ease-in 0.3s forwards;
 }
-
 
 @keyframes sparkle {
     from {
@@ -446,37 +424,7 @@
     to {
         fill: transparent;
     }
-
 }
-
-/*.like-icon.is-liked .sparks {*/
-/*    transition: opacity 0.3s ease-in 0.1s;*/
-/*}*/
-
-
-/*1s, opacity 0.3s ease 6s;*/
-
-/*.heart:hover .main-body {*/
-/*    fill: var(--fill-color);*/
-/*    opacity: 1;*/
-/*    !*transition: fill 0.3s ease 1s, opacity 0.3s ease 4s;*!*/
-/*}*/
-
-/*.heart:hover .contour {*/
-/*    fill: var(--fill-color);*/
-/*    opacity: 1;*/
-/*    !*transition: fill 0.3s ease 1s, opacity 0.3s ease 2s;*!*/
-/*}*/
-
-/*.heart:hover ~ .sparks {*/
-/*    fill: var(--fill-color);*/
-/*    opacity: 1;*/
-/*    !*transition: fill 0.3s ease 1s, opacity 0.3s ease 5s;*!*/
-/*}*/
-
-
-/*Это конец кода*/
-/*я то же тебя люблю*/
 
 /*✦ card__like-button — для кнопки Like рядом с иконкой*/
 .card__like-button {
@@ -485,19 +433,16 @@
     font-size: 0;
     border: 2px solid var(--accent-color);
     padding: 0;
-    background-color: var(--like-color);
+    background-color: var(--bg-color);
     min-width: 130px;
     min-height: 38px;
     overflow: hidden;
-    /*mix-blend-mode: difference;*/
-
 }
-
 
 .card__like-button::before {
     content: "";
     position: absolute;
-    background-color: black;
+    background-color: var(--accent-color);
     transform: scaleX(0);
     box-shadow: 2px 2px 0 var(--accent-color);
     z-index: 1;
@@ -515,7 +460,6 @@
 
 .card__like-button:hover {
     cursor: pointer;
-
 }
 
 .card__like-button span {
@@ -525,14 +469,12 @@
 
 .card__like-button:focus {
     outline: none;
-
 }
 
 .card__like-button:focus-visible {
     box-shadow: 2px 2px 0 var(--accent-color);
     transition: box-shadow 0.5s ease;
 }
-
 
 .button__text {
     font-family: var(--accent-font), fantasy;
@@ -541,10 +483,9 @@
     mix-blend-mode: difference;
 }
 
-
 .last_button {
     position: relative;
-    background-color: var(--like-color);
+    background-color: var(--bg-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -555,8 +496,6 @@
     height: 84px;
     border: 2px solid var(--accent-color);
     font-size: 14px;
-
-    /*mix-blend-mode: difference;*/
 }
 
 @media (min-width: 700px) {
@@ -570,7 +509,7 @@
 .last_button::before {
     content: "";
     position: absolute;
-    background-color: black;
+    background-color: var(--accent-color);
     transform: scaleX(0);
     box-shadow: 2px 2px 0 var(--accent-color);
     z-index: 1;
@@ -596,7 +535,6 @@
     z-index: 2;
 }
 
-
 .last_button:focus {
     outline: none;
 }
@@ -614,7 +552,6 @@
     /*fill: white;*/
     mix-blend-mode: difference;
     z-index: 10;
-
 }
 
 @media (min-width: 700px) {
@@ -623,14 +560,10 @@
     }
 }
 
-
 .floppy_dialog {
     color: var(--like-color);
     mix-blend-mode: difference;
     place-self: center;
-    /*width: 39px;*/
-    /*height: auto;*/
-
 }
 
 dialog::backdrop {
@@ -647,8 +580,6 @@ dialog::backdrop {
     min-height: 195px;
     background-color: var(--bg-color);
     border: 2px solid var(--accent-color);
-
-
 }
 
 .opened_window[open] {
@@ -659,7 +590,6 @@ dialog::backdrop {
     text-transform: uppercase;
     line-height: 21px;
 }
-
 
 .dialog_content {
     display: flex;
@@ -679,7 +609,3 @@ dialog::backdrop {
     border: 2px solid var(--accent-color);
     background-color: inherit;
 }
-
-
-
-
