@@ -485,7 +485,7 @@
     font-size: 0;
     border: 2px solid var(--accent-color);
     padding: 0;
-    /*background-color: orange;*/
+    background-color: var(--like-color);
     min-width: 130px;
     min-height: 38px;
     overflow: hidden;
@@ -511,11 +511,9 @@
     transform: scaleX(1);
     transition: transform 0.5s ease-in-out;
     transform-origin: left;
-    color: #FFFFFF;
 }
 
 .card__like-button:hover {
-    color: #FFFFFF;
     cursor: pointer;
 
 }
@@ -545,12 +543,13 @@
 
 
 .last_button {
-    background-color: var(--bg-color);
+    position: relative;
+    background-color: var(--like-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+
     gap: 10px;
     margin: 52px auto 100px;
     min-width: 306px;
@@ -584,6 +583,16 @@
     transform: scaleX(1);
     transition: transform 0.5s ease-in-out;
     transform-origin: left;
+}
+
+.last_button:hover {
+    cursor: pointer;
+
+}
+
+.last_button span {
+    position: relative;
+    z-index: 2;
 }
 
 
