@@ -1,70 +1,80 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Подписка на рассылку</title>
+  <title>Button with Text Color Change</title>
   <style>
-    dialog {
-      border: 1px solid #ccc;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    :root {
+      --accent-color: #000000; /* Пример акцентного цвета */
+      --text-light: #FFFFFF;  /* Белый текст для светлой темы */
+      --text-dark: #000000;   /* Чёрный текст для тёмной темы */
+      --background-light: #FFFFFF; /* Белый фон для светлой темы */
+      --background-dark: #000000;  /* Чёрный фон для тёмной темы */
     }
 
-    label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
+    /* Стили для светлой темы */
+    .card__like-button {
+      position: relative;
+      display: inline-block;
+      font-size: 0;
+      border: 2px solid var(--accent-color);
+      padding: 0;
+      background-color: var(--background-light);
+      min-width: 130px;
+      min-height: 38px;
+      overflow: hidden;
     }
 
-    input[type="email"] {
+    .card__like-text {
+      position: relative;
+      color: var(--text-light);
+      z-index: 2; /* Текст выше псевдоэлемента */
+    }
+
+    .card__like-icon {
+      position: relative;
+      color: var(--text-light);
+      z-index: 2; /* Иконка выше псевдоэлемента */
+    }
+
+    .card__like-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      height: 100%;
+      background-color: black;
+      mix-blend-mode: difference;
+      z-index: 1; /* Псевдоэлемент ниже текста и иконки */
     }
 
-    button[type="submit"] {
-      padding: 10px 20px;
-      background-color: #ff0000;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+    /* Стили для тёмной темы */
+    .dark-theme .card__like-button {
+      background-color: var(--background-dark);
     }
 
-    button[type="submit"]:hover {
-      background-color: #218838;
+    .dark-theme .card__like-text, .dark-theme .card__like-icon {
+      color: var(--accent-color); /* Акцентный цвет для текста в тёмной теме */
+    }
+
+    .dark-theme .card__like-button::before {
+      background-color: white; /* Псевдоэлемент тёмной темы */
     }
   </style>
 </head>
 <body>
-<button id="subscribeBtn">Подписаться на рассылку</button>
+<button class="card__like-button">
+  <span class="card__like-text">Save</span>
+  <i class="card__like-icon">&#128190;</i>
+</button>
 
-<dialog id="subscribeDialog">
-  <h2>Подпишитесь на нашу рассылку</h2>
-  <form>
-    <label for="email">Введите вашу почту</label>
-    <input type="email" id="email" placeholder="test@example.com" required>
-    <button type="submit">Подписаться</button>
-  </form>
-</dialog>
+<button class="theme-toggle">Toggle Theme</button>
 
 <script>
-  const subscribeBtn = document.getElementById('subscribeBtn');
-  const subscribeDialog = document.getElementById('subscribeDialog');
-
-  subscribeBtn.addEventListener('click', () => {
-    subscribeDialog.showModal();
+  // Пример переключения темы с помощью JavaScript
+  document.querySelector('button.theme-toggle').addEventListener('click', function() {
+    document.documentElement.classList.toggle('dark-theme');
   });
-
-  subscribeDialog.addEventListener('submit', (event) => {
-    event.preventDefault();
-    alert('Спасибо за подписку!');
-    subscribeDialog.close();
-  });
-</script>
-</body>
-</html>
+  </

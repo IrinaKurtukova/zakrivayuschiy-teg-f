@@ -15,6 +15,7 @@
     --color-hover: rgba(0,0,0, 0.6);
     --contour-color: #000000;
     --fill-color: #ff0000;
+    --like-color: #ffffff;
 }
 
 
@@ -33,6 +34,7 @@
     --color-hover: rgba(0, 204, 20, 0.6);
     --contour-color: #00CC14;
     --fill-color: #ff0000;
+    --like-color: #00CC14;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -48,5 +50,6 @@
         --color-hover: rgba(0, 204, 20, 0.6);
         --contour-color: #00CC14;
         --fill-color: #ff0000;
+        --like-color: #00CC14;
     }
 }

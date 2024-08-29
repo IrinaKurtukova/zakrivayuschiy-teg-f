@@ -16,7 +16,7 @@
 
 .page {
     min-inline-size: 320px;
-    min-block-size: 100dvb;
+    min-block-size: 100 dvb;
     font-family: var(--main-font, 'Inter');
     background-color: var(--bg-color, #FFFFFF);
     color: var(--accent-color, #000000);
@@ -47,7 +47,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--bg-color, #FFFFFF);
-    font-family: var(--accent-font), PressStart2P;
+    font-family: var(--accent-font), fantasy;
     margin-block: 100px;
     text-transform: uppercase;
     border: 2px solid var(--accent-color, #000000);
@@ -59,22 +59,12 @@
         height: 368px;
         /*gap: 10px;*/
     }
-
 }
-
-
-
 
 .content {
-    /*width: var(--content-width);*/
     min-width: 375px;
     max-width: 700px;
-
 }
-
-
-
-
 
 .heading {
     font-size: clamp(1.0025rem, 2.6808rem + 1.4085vw, 4.0625rem);
@@ -89,14 +79,9 @@
 
 @media (min-width: 701px) {
     .subheading {
-        /*margin-top: 5px;*/
         padding-top: 30px;
     }
 }
-
-
-
-
 
 .theme-menu {
     padding-top: 24px;
@@ -117,6 +102,8 @@
     border: none;
     padding-left: 20px;
     text-transform: uppercase;
+    background-color: hotpink;
+    display: inline-block;
 }
 
 .theme-menu__button:disabled::before {
@@ -144,22 +131,40 @@
     transition: color 0.3s ease;
 }
 
-.theme-menu__button::after {
-    content: "";
-    display: block;
-    width: 0%;
-    /*scale: 0;*/
-    height: 2px;
-    margin-top: 1px;
-    background-color: inherit;
-    transition: width 0.5s;
+.theme-menu__button:disabled {
+    pointer-events: none;
+    color: var(--color-hover);
 }
 
-.theme-menu__button:focus::after {
+
+.theme-menu__button::after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    margin-top: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.theme-menu__button:hover::after {
+    transform: scaleX(1);
+}
+
+
+.theme-menu__button:focus-visible::after {
     width: 100%;
     outline: none;
+    transform: scaleX(1);
     /*scale: 1;*/
-    /*transition: color 0.3s ease;*/
+    color: var(--color-hover);
+    transition: color 0.3s ease, transform 0.3s ease;
+
 }
 
 .theme-menu__button:focus {
@@ -167,7 +172,8 @@
 }
 
 .theme-menu__button:focus-visible {
-    /*transition: color 0.3s ease;*/
+    color: var(--color-hover);
+    transition: color 0.3s ease;
 }
 
 
@@ -176,7 +182,6 @@
     flex-direction: column;
     gap: 49px;
 }
-
 
 
 .card {
@@ -198,7 +203,7 @@
 
 .label {
     position: absolute;
-    font-family: var(--accent-font, PressStart2P);
+    font-family: var(--accent-font, fantasy);
     font-size: 14px;
     text-transform: uppercase;
     color: var(--accent-color, #000000);
@@ -213,8 +218,6 @@
         right: 26px;
     }
 }
-
-
 
 
 @supports (-webkit-text-stroke: 1px var(--label-border-color)) or (text-stroke: 1px var(--label-border-color)) {
@@ -248,7 +251,6 @@
 }
 
 
-
 .article {
     font-family: var(--main-font), Inter;
     font-size: 18px;
@@ -256,21 +258,15 @@
 }
 
 
-
-
-
 .button {
     display: flex;
     justify-content: flex-end;
-    background-color: #ffc400;
+    /*background-color: #ffc400;*/
     gap: 10px;
     margin-right: 25px;
     margin-bottom: 25px;
     margin-top: 25px;
 }
-
-
-
 
 
 /*card__icon-button — для кнопки, оборачивающей иконку*/
@@ -279,14 +275,16 @@
     display: inline-block;
     justify-content: center;
     align-items: center;
-    background-color: transparent;
+    /*background-color: transparent;*/
+    background-color: hotpink;
     padding: 0;
-    border: none;
     cursor: pointer;
+    border: 2px solid transparent;
 
 }
 
 .card__icon-button:focus {
+    border: none;
     outline: none;
 }
 
@@ -302,22 +300,12 @@
 }
 
 
-
-
-
-
-
 /*✦ like-icon — для svg-иконки анимированного сердца*/
 .like-icon {
     /*background-color: #20f606;*/
     /*width: 27px;*/
     /*height: 24px;*/
 }
-
-
-
-
-
 
 
 /*.sparks {*/
@@ -330,15 +318,9 @@
 /*    opacity: 1;*/
 /*}*/
 
-.sparks {
-    fill: transparent;
-    opacity: 0;
-    transition: fill 0.3s ease-in 0.3s;
-}
-
 /*Это мой код*/
-/*Это начало кода*/
 
+/*Это начало кода*/
 .core {
     fill: transparent;
     transition: fill 0.3s linear;
@@ -350,13 +332,12 @@
     transition-delay: 0.05s;
 }
 
-
-
 .heart:hover .core {
     fill: var(--accent-color);
     opacity: 1;
     /*transition: fill 0.3s linear;*/
-    }
+}
+
 
 .heart:hover .main-body {
     fill: var(--accent-color);
@@ -364,11 +345,11 @@
     /*transition: fill 0.3s linear;*/
 }
 
-
 .heart:not(:hover).core {
     transition-delay: 0.03s;
     fill: var(--contour-color);
 }
+
 
 .heart:active .core {
     fill: var(--fill-color);
@@ -400,11 +381,10 @@
     animation: bigger 0.3s ease-in 0.1s;
 }
 
-
 @keyframes bigger {
     from {
         scale: 1;
-         }
+    }
     50% {
         scale: 1.15;
     }
@@ -413,20 +393,65 @@
     }
 }
 
-@keyframes fill {
-    from {
-        fill: transparent;
-    }
-    50% {
-        fill: var(--fill-color);
-    }
-    to {
-        fill: transparent;
-    }
+
+
+
+
+
+
+
+/*@keyframes fill {*/
+/*    from {*/
+/*        fill: transparent;*/
+/*    }*/
+/*    50% {*/
+/*        fill: var(--fill-color);*/
+/*    }*/
+/*    to {*/
+/*        fill: transparent;*/
+/*    }*/
+/*}*/
+
+
+
+.sparks {
+    fill: transparent;
+    transition: fill 0.3s linear;
+
+    /*animation: sparkle 0.3s ease-in 0.3s forwards;*/
+    /*!*fill: transparent;*!*/
+    /*opacity: 0;*/
+    /*!*transition: fill 0.3s ease-in 0.3s;*!*/
+}
+
+.heart:active .sparks {
+    fill: var(--fill-color);
+    opacity: 1;
+    /*transition: fill 0.3s linear;*/
+}
+
+.like-icon.is-liked .sparks {
+    fill: var(--fill-color);
+    opacity: 1;
+    /*transition: fill 0.6s linear;*/
+    animation: sparkle 0.3s ease-in 0.3s forwards;
 }
 
 
+@keyframes sparkle {
+    from {
+        fill: transparent;
+    }
 
+    to {
+        fill: transparent;
+    }
+
+}
+
+/*.like-icon.is-liked .sparks {*/
+/*    transition: opacity 0.3s ease-in 0.1s;*/
+/*}*/
 
 
 /*1s, opacity 0.3s ease 6s;*/
@@ -450,11 +475,6 @@
 /*}*/
 
 
-
-
-
-
-
 /*Это конец кода*/
 /*я то же тебя люблю*/
 
@@ -465,10 +485,11 @@
     font-size: 0;
     border: 2px solid var(--accent-color);
     padding: 0;
-    background-color: orange;
+    /*background-color: orange;*/
     min-width: 130px;
     min-height: 38px;
     overflow: hidden;
+    /*mix-blend-mode: difference;*/
 
 }
 
@@ -515,19 +536,12 @@
 }
 
 
-
-
-
-
-
-
-
 .button__text {
-    font-family: var(--accent-font), PressStart2P, sans-serif;
+    font-family: var(--accent-font), fantasy;
     font-size: 14px;
-    color: var(--accent-color);
+    color: var(--like-color);
+    mix-blend-mode: difference;
 }
-
 
 
 .last_button {
@@ -573,9 +587,6 @@
 }
 
 
-
-
-
 .last_button:focus {
     outline: none;
 }
@@ -589,9 +600,8 @@
 .floppy_button {
     width: 28px;
     height: auto;
-
-    /*fill: var(--accent-color);*/
-    /*mix-blend-mode: difference;*/
+    fill: var(--like-color);
+    mix-blend-mode: difference;
 
 }
 
@@ -604,8 +614,9 @@
 
 
 .floppy_dialog {
-    fill: var(--accent-color);
+    fill: var(--like-color);
     mix-blend-mode: difference;
+    place-self: center;
     /*width: 39px;*/
     /*height: auto;*/
 
@@ -635,6 +646,7 @@ dialog::backdrop {
 
 .text_uppercase {
     text-transform: uppercase;
+    line-height: 21px;
 }
 
 
@@ -642,9 +654,20 @@ dialog::backdrop {
     display: flex;
     flex-direction: row;
     gap: 20px;
+    width: 257px;
+    height: 63px;
 }
 
-
+.ok_button {
+    color: var(--accent-color);
+    font-family: var(--accent-font), fantasy;
+    font-size: 14px;
+    text-transform: uppercase;
+    width: 257px;
+    height: 38px;
+    border: 2px solid var(--accent-color);
+    background-color: inherit;
+}
 
 
 
