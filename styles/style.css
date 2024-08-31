@@ -17,7 +17,7 @@
 .page {
     min-inline-size: 320px;
     min-block-size: 100 dvb;
-    font-family: var(--main-font, 'Inter');
+    font-family: var(--main-font, 'Inter'), sans-serif;
     background-color: var(--bg-color, #FFFFFF);
     color: var(--accent-color, #000000);
     background-image: repeating-linear-gradient(90deg, var(--color-gradient-striples) 0px, var(--color-gradient-striples) 2px, transparent 2px, transparent 4px),
@@ -45,16 +45,15 @@
     justify-content: center;
     align-items: center;
     background-color: var(--bg-color, #FFFFFF);
-    font-family: var(--accent-font), fantasy;
+    font-family: var(--accent-font, 'PressStart2P'), fantasy;
     margin-block: 100px;
     text-transform: uppercase;
     border: 2px solid var(--accent-color, #000000);
-    }
+}
 
 @media (min-width: 701px) {
     .header {
         width: 700px;
-        height: 368px;
     }
 }
 
@@ -65,13 +64,19 @@
 
 .heading {
     font-size: clamp(1.0025rem, 2.6808rem + 1.4085vw, 4.0625rem);
-    padding: clamp(120px, 114.4348px + 1.7391cqi, 136px) clamp(14px, -23.0435px + 11.0061cqi, 120.5px) 0px;
-    line-height: 49px;
+    padding: 122px 14px 0px;
+    line-height: 43px;
+}
+
+@media (min-width: 700px) {
+    .heading {
+        padding: 148px 122.5px 0px;
+    }
 }
 
 .subheading {
     font-size: clamp(0.875rem, 0.7165rem + 0.7923vw, 1.4375rem);
-    padding-top: 20px;
+    padding-top: 24px;
 }
 
 @media (min-width: 701px) {
@@ -81,44 +86,62 @@
 }
 
 .theme-menu {
+    padding-left: 24px;
     padding-top: 24px;
-    padding-bottom: 20px;
+    padding-bottom: 11px;
 }
 
 .theme-menu__item {
     font-size: 14px;
-}
-
-.theme-menu__item:not(:last-child) {
-    margin-block-end: 9px;
+    margin-block-end: 8px;
 }
 
 .theme-menu__button {
     position: relative;
     background-color: inherit;
     border: none;
-    padding-left: 20px;
     text-transform: uppercase;
     display: inline-block;
+    text-decoration: none;
 }
 
 .theme-menu__button:disabled::before {
     content: "▶";
     position: absolute;
     color: inherit;
-    left: 0;
+    left: -20px;
+    top: 0;
     pointer-events: none;
     animation: moving 0.5s ease-in-out infinite alternate;
 }
 
-@keyframes moving {
-    from {
-        translate: 0 0;
-    }
+.theme-menu__button:focus {
+    border: none;
+    outline: none;
+}
 
-    to {
-        translate: 4px 0;
-    }
+.link-nice::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    margin-top: 2px;
+    transition: width 300ms, background-color 0.5s;
+    border: none;
+}
+
+.link-nice:focus::after {
+    width: 0;
+}
+
+.link-nice:focus-visible::after {
+    width: 100%;
+    background-color: currentColor;
+}
+
+.link-nice:active::after {
+    width: 0;
 }
 
 .theme-menu__button:hover {
@@ -132,37 +155,6 @@
     color: var(--color-hover);
 }
 
-.theme-menu__button::after {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    margin-top: 1px;
-    background-color: currentColor;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-}
-
-.theme-menu__button:hover::after {
-    transform: scaleX(1);
-}
-
-.theme-menu__button:focus-visible::after {
-    width: 100%;
-    outline: none;
-    transform: scaleX(1);
-    color: var(--color-hover);
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.theme-menu__button:focus {
-    outline: none;
-}
-
 .theme-menu__button:focus-visible {
     color: var(--color-hover);
     transition: color 0.3s ease;
@@ -171,7 +163,7 @@
 .cards_list {
     display: flex;
     flex-direction: column;
-    gap: 49px;
+    gap: 50px;
 }
 
 .card {
@@ -182,23 +174,31 @@
 }
 
 .article_name {
-    padding: 4px 10px 7px;
+    padding: 5px 10px 5.4px;
     font-size: 18px;
+    line-height: 21.78px;
 }
 
 .wrapper {
     position: relative;
 }
 
+.image_container {
+    margin: 0;
+    padding: 0;
+    outline: 2px solid var(--accent-color, #000000);
+}
+
 .label {
     position: absolute;
-    font-family: var(--accent-font, fantasy);
+    font-family: var(--accent-font, 'PressStart2P'), fantasy;
     font-size: 14px;
     text-transform: uppercase;
     color: var(--accent-color, #000000);
     mix-blend-mode: hard-light;
     top: 25px;
     right: 12px;
+    z-index: 10;
 }
 
 @media (min-width: 701px) {
@@ -228,12 +228,12 @@
     block-size: 100%;
     object-fit: cover;
     object-position: center;
-    outline: 2px solid var(--accent-color, #000000);
+    display: block;
 }
 
 @media (min-width: 697px) {
     .image {
-        max-width: 696px;
+        max-width: 700px;
     }
 }
 
@@ -242,11 +242,11 @@
 }
 
 .black_truck {
-    filter: contrast(50%);
+    filter: blur(10px);
 }
 
 .neon_truck {
-    filter: blur(10px);
+    filter: blur(1px);
 }
 
 .pink_truck {
@@ -281,14 +281,20 @@
 }
 
 .red_truck {
-    filter: invert(1) brightness(200%) saturate(60%) sepia(10%);
+    filter: brightness(200%) saturate(60%) sepia(10%);
 }
 
-
 .article {
-    font-family: var(--main-font), Inter;
+    font-family: var(--main-font, 'Inter'), sans-serif;
     font-size: 18px;
-    padding: 25px 25px 0px;
+    padding: 26px 25px 1px;
+    line-height: 21px;
+}
+
+@media (min-width: 701px) {
+    .article {
+        padding: 27px 25px 0px;
+    }
 }
 
 .button {
@@ -296,10 +302,9 @@
     justify-content: flex-end;
     gap: 10px;
     margin-right: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     margin-top: 25px;
 }
-
 
 /*card__icon-button — для кнопки, оборачивающей иконку*/
 .card__icon-button {
@@ -325,12 +330,11 @@
 
 .card__icon-button:hover {
     fill: var(--accent-color);
-    transition: fill 0.5s ease;
+    transition: fill 0.03s ease;
 }
 
 /*✦ like-icon — для svg-иконки анимированного сердца*/
 .like-icon {
-
 }
 
 .core {
@@ -344,11 +348,14 @@
     transition-delay: 0.05s;
 }
 
+.heart {
+    transform-origin: center;
+}
+
 .heart:hover .core {
     fill: var(--accent-color);
     opacity: 1;
 }
-
 
 .heart:hover .main-body {
     fill: var(--accent-color);
@@ -388,18 +395,6 @@
     animation: bigger 0.3s ease-in 0.1s;
 }
 
-@keyframes bigger {
-    from {
-        scale: 1;
-    }
-    50% {
-        scale: 1.15;
-    }
-    to {
-        scale: 1;
-    }
-}
-
 .sparks {
     fill: transparent;
     transition: fill 0.3s linear;
@@ -416,16 +411,6 @@
     animation: sparkle 0.3s ease-in 0.3s forwards;
 }
 
-@keyframes sparkle {
-    from {
-        fill: transparent;
-    }
-
-    to {
-        fill: transparent;
-    }
-}
-
 /*✦ card__like-button — для кнопки Like рядом с иконкой*/
 .card__like-button {
     position: relative;
@@ -435,8 +420,9 @@
     padding: 0;
     background-color: var(--bg-color);
     min-width: 130px;
-    min-height: 38px;
+    height: 38px;
     overflow: hidden;
+    margin-left: -3px;
 }
 
 .card__like-button::before {
@@ -477,7 +463,7 @@
 }
 
 .button__text {
-    font-family: var(--accent-font), fantasy;
+    font-family: var(--accent-font, 'PressStart2P'), fantasy;
     font-size: 14px;
     color: var(--like-color);
     mix-blend-mode: difference;
@@ -490,10 +476,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin: 52px auto 100px;
+    gap: 3px;
+    margin: 0 auto 100px;
     min-width: 306px;
-    height: 84px;
+    padding: 11px 0px;
     border: 2px solid var(--accent-color);
     font-size: 14px;
 }
@@ -502,7 +488,7 @@
     .last_button {
         flex-direction: row;
         width: 335px;
-        height: 55px;
+        padding: 5px 0px;
     }
 }
 
@@ -527,7 +513,6 @@
 
 .last_button:hover {
     cursor: pointer;
-
 }
 
 .last_button span {
@@ -547,9 +532,7 @@
 
 .floppy_button {
     width: 28px;
-    height: auto;
     color: var(--like-color);
-    /*fill: white;*/
     mix-blend-mode: difference;
     z-index: 10;
 }
@@ -596,16 +579,59 @@ dialog::backdrop {
     flex-direction: row;
     gap: 20px;
     width: 257px;
-    height: 63px;
 }
 
 .ok_button {
+    position: relative;
+    background-color: var(--bg-color);
     color: var(--accent-color);
-    font-family: var(--accent-font), fantasy;
+    font-family: var(--accent-font, 'PressStart2P'), fantasy;
     font-size: 14px;
     text-transform: uppercase;
     width: 257px;
-    height: 38px;
+    padding: 12.5px 114.5px;
     border: 2px solid var(--accent-color);
-    background-color: inherit;
+}
+
+.ok_button span {
+    position: relative;
+    z-index: 2;
+}
+
+.ok_button::before {
+    content: "";
+    position: absolute;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    box-shadow: 2px 2px 0 var(--accent-color);
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ok_button:hover::before {
+    transform: scaleX(1);
+    transition: transform 0.5s ease-in-out;
+    transform-origin: left;
+}
+
+.ok_button:hover {
+    cursor: pointer;
+}
+
+.ok_button span {
+    position: relative;
+    z-index: 2;
+}
+
+.ok_button:focus {
+    outline: none;
+}
+
+.ok_button:focus-visible {
+    outline: none;
+    box-shadow: 2px 2px 0 var(--accent-color);
+    transition: box-shadow 0.5s ease;
 }
