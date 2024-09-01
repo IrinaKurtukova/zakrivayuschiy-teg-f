@@ -319,7 +319,6 @@
 }
 
 .card__icon-button:focus {
-    border: none;
     outline: none;
 }
 
@@ -492,9 +491,8 @@
     }
 
     .floppy_button {
-       margin-right: 4px;
+        margin-right: 4px;
     }
-
 }
 
 .last_button::before {
